@@ -1,4 +1,6 @@
+import Toast from "../components/common/Toast";
 import { IArticle, IArticleData } from "../types/articles";
+import { ERROR_MESSAGE, STATUS } from "../utils/constants";
 import { fetchWrapper } from "../utils/http";
 
 export interface FetchActionResponse<T> {
@@ -15,7 +17,6 @@ export async function getAllArticles(): Promise<
     const response = await fetchWrapper<IArticle[]>("GET", url);
     const articleResponseData = await response.json();
     if (!response.ok) {
-      console.log(response);
       throw articleResponseData.message;
     }
     return {
@@ -23,7 +24,6 @@ export async function getAllArticles(): Promise<
       data: articleResponseData,
     };
   } catch (error) {
-    console.log(error);
     return {
       type: "error",
       error: error,
@@ -40,7 +40,6 @@ export async function getArticleById(
     const articleResponseData = await response.json();
 
     if (!response.ok) {
-      console.log(response);
       throw articleResponseData;
     }
 

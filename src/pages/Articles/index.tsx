@@ -8,7 +8,6 @@ import Loader from "../../components/common/Loader";
 import NotFound from "../../components/common/EmptyList";
 
 const Articles: React.FC = () => {
-
   const { id } = useParams();
   const [article, setArticle] = useState<IArticleData>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -24,7 +23,7 @@ const Articles: React.FC = () => {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -33,14 +32,16 @@ const Articles: React.FC = () => {
   useEffect(() => {
     // Function to fetch article by Id
     fetchData();
-  },[id]);
+  }, [id]);
 
   return (
     <>
+      {/* Loader */}
       {isLoading && <Loader />}
       <Link className="back-link" to={"/"}>
         <Button text={`\u2190 Go Back`} customClassname="back-btn" />
       </Link>
+      {/* check if the article is not empty  */}
       {!article ? (
         <NotFound />
       ) : (

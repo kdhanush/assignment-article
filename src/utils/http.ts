@@ -1,7 +1,17 @@
 import Toast from "../components/common/Toast";
 import { ERROR_MESSAGE, STATUS, STATUS_CODE } from "./constants";
 
+/**
+ * HTTP methods supported by the fetchWrapper function
+ */
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
+
+/**
+ *
+ * @param method - The HTTP method to be used for the request (GET, POST, PUT, DELETE).
+ * @param endpoint - The API endpoint to which the request will be made.
+ * @param body - The request body (optional, only applicable for POST and PUT requests).
+ */
 
 export async function fetchWrapper<TBody extends object>(
   method: HttpMethod,
@@ -21,17 +31,7 @@ export async function fetchWrapper<TBody extends object>(
     });
 
     if (!response.ok) {
-      let errorMessage: string;
-      switch (response.status) {
-        case STATUS_CODE.STATUS_404:
-          errorMessage = ERROR_MESSAGE.STATUS_404_MESSAGE;
-          break;
-        case STATUS_CODE.STATUS_500:
-          errorMessage = ERROR_MESSAGE.STATUS_500_MESSAGE;
-          break;
-        default:
-          errorMessage = `${ERROR_MESSAGE.DEFAULT} ${response.status}`;
-      }
+      const errorMessage = getErrorMessage(response.status);
       throw new Error(errorMessage);
     }
 
@@ -45,3 +45,14 @@ export async function fetchWrapper<TBody extends object>(
     throw error;
   }
 }
+
+const getErrorMessage = (status: number) => {
+  switch (status) {
+    case STATUS_CODE.STATUS_404:
+      return ERROR_MESSAGE.STATUS_404_MESSAGE;
+    case STATUS_CODE.STATUS_500:
+      return ERROR_MESSAGE.STATUS_500_MESSAGE;
+    default:
+      return `${ERROR_MESSAGE.DEFAULT} ${status}`;
+  }
+};

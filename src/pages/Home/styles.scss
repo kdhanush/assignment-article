@@ -1,0 +1,20 @@
+.home-container {
+  .header-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-container {
+    .header-wrap {
+        flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+  }
+}
