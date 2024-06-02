@@ -1,0 +1,21 @@
+.home-header {
+  text-align: center;
+
+  h1 {
+    font-size: 3rem;
+    color: #1980ff;
+    margin-bottom: 1rem;
+
+    span {
+      color: #b0c4de;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .home-header {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}

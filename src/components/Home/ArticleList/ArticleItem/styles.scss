@@ -1,0 +1,35 @@
+.articleitem-wrap {
+  display: flex;
+  flex-direction: column;
+  background-color: #e6e6e6;
+  padding: 1rem;
+  border-radius: 24px;
+  border-right: 5px solid #1980ff;
+  text-decoration: none;
+  color: inherit;
+  justify-content: space-between;
+
+  h3 {
+    margin: 0.5rem 0 1rem 0;
+    flex: 1;
+    color: #1980ff;
+    font-size: 1rem;
+  }
+
+  .article-desc {
+    position: relative;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #444444;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .readmore-button {
+    width: 123px;
+  }
+
+  .more-btn {
+    cursor: pointer;
+  }
+}
