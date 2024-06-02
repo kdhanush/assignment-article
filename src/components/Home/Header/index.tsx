@@ -4,9 +4,7 @@ import "./styles.scss";
 const Header: React.FC = () => {
   return (
     <div className="home-header">
-      <h1>
-        <span>"</span>Articles<span>"</span>
-      </h1>
+      <h1>Articles</h1>
     </div>
   );
 };
